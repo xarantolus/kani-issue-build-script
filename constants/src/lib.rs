@@ -13,3 +13,14 @@ impl kani::Arbitrary for SomeStruct {
         }
     }
 }
+
+
+#[cfg(kani)]
+mod verification {
+    use super::*;
+
+    #[kani::proof]
+    fn zero() {
+        assert_ne!(SOME_CONSTANT, 0);
+    }
+}
